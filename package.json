@@ -1,0 +1,38 @@
+{
+  "name": "dtxexmple",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest",
+    "test:e2e": "detox test ",
+    "test:e2e:build": "detox build"
+  },
+  "dependencies": {
+    "detox": "^7.2.0",
+    "mocha": "^5.0.4",
+    "react": "16.3.0-alpha.1",
+    "react-native": "0.54.2"
+  },
+  "devDependencies": {
+    "babel-jest": "22.4.1",
+    "babel-preset-react-native": "4.0.0",
+    "jest": "^22.4.2",
+    "react-test-renderer": "16.3.0-alpha.1"
+  },
+  "jest": {
+    "preset": "react-native"
+  },
+  "detox": {
+    "test-runner": "jest",
+    "runner-config": "e2e/config.json",
+    "configurations": {
+      "android.emu.debug": {
+        "binaryPath": "android/app/build/outputs/apk/debug/app-debug.apk",
+        "build": "cd android && ./gradlew assembleDebug assembleAndroidTest -DtestBuildType=debug && cd ..",
+        "type": "android.attached",
+        "name": "192.168.56.101:5555"
+      }
+    }
+  }
+}
